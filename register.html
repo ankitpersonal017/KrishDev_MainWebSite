@@ -8,17 +8,18 @@
     <meta name="author" content="Website Design Templates">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="keywords" content="Multi Purpose HTML5 Template">
-    <meta name="description" content="KrishDev Herbal - Multi Purpose HTML5 Template">
+    <meta name="keywords" content="KrishDev Herbal, Member SignUp, Register">
+    <meta name="description" content="Register as a member of KrishDev Herbal to access member benefits.">
 
     <!-- title  -->
-    <title>KrishDev Herbal - Multi Purpose HTML5 Template</title>
+    <title>KrishDev Herbal - Member SignUp</title>
 
     <!-- favicon -->
     <link rel="shortcut icon" href="img/logos/favicon.png">
     <link rel="apple-touch-icon" href="img/logos/apple-touch-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="72x72" href="img/logos/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="img/logos/apple-touch-icon-114x114.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- plugins -->
     <link rel="stylesheet" href="src/css/plugins.css">
@@ -69,7 +70,7 @@
                 <!-- start top search -->
                 <div class="top-search bg-primary">
                     <div class="container">
-                        <form class="search-form" action="https://aliconhtml.websitelayout.net/search.html" method="GET"
+                        <form class="search-form" action="/" method="GET"
                             accept-charset="utf-8">
                             <div class="input-group">
                                 <span class="input-group-addon cursor-pointer">
@@ -92,7 +93,7 @@
                                     <div class="navbar-header navbar-header-custom">
                                         <!-- start logo -->
                                         <a href="https://aliconhtml.websitelayout.net/index.html"
-                                            class="navbar-brand"><img id="logo" src="src/img/logos/logo-inner.jpeg"
+                                            class="navbar-brand"><img id="logo" src="src/img/logos/logo-inner.png"
                                                 alt="logo"></a>
                                         <!-- end logo -->
                                     </div>
@@ -176,7 +177,8 @@
                         <div class="card p-2-0 p-sm-2-5 my-2-0">
 
                             <div class="mb-4 text-center">
-                                <h2 class="font-weight-normal mb-0">Welcome to <span class="text-primary text-nowrap font-weight-bold">KrishDev
+                                <h2 class="font-weight-normal mb-0">Welcome to <span
+                                        class="text-primary text-nowrap font-weight-bold">KrishDev
                                         Herbal</span></h2>
                                 <p class="mb-0">Register to your account.</p>
                             </div>
@@ -236,7 +238,8 @@
                                     <div class="col-12 col-sm-12 col-md-6 col-lg-4">
                                         <div class="form-group">
                                             <label>Date of Birth</label>
-                                            <input type="date" id="dateOfBirth" name="dateOfBirth" class="form-control required">
+                                            <input type="date" id="dateOfBirth" name="dateOfBirth"
+                                                class="form-control required">
                                         </div>
                                     </div>
 
@@ -245,24 +248,26 @@
                                     <div class="col-12 col-sm-12 col-md-6 col-lg-4">
                                         <div class="form-group">
                                             <label>Aadhar Card No</label>
-                                            <input type="text" id="aadharCard" maxlength="12" class="form-control required"
-                                                name="aadharCard" placeholder="Aadhar Card No">
+                                            <input type="text" id="aadharCard" maxlength="12"
+                                                class="form-control required" name="aadharCard"
+                                                placeholder="Aadhar Card No">
                                         </div>
                                     </div>
 
                                     <div class="col-12 col-sm-12 col-md-6 col-lg-4">
                                         <div class="form-group">
                                             <label>Pan Card No</label>
-                                            <input type="text" id="panCardNo" maxlength="10" class="form-control required"
-                                                name="panCardNo" placeholder="Pan Card No">
+                                            <input type="text" id="panCardNo" maxlength="10"
+                                                class="form-control required" name="panCardNo"
+                                                placeholder="Pan Card No">
                                         </div>
                                     </div>
 
                                     <div class="col-12 col-sm-12 col-md-6 col-lg-4">
                                         <div class="form-group">
                                             <label>Address</label>
-                                            <textarea type="text" id="fullAddress" class="form-control required" rows="3"
-                                                name="fullAddress" placeholder="Full Address"></textarea>
+                                            <textarea type="text" id="fullAddress" class="form-control required"
+                                                rows="3" name="fullAddress" placeholder="Full Address"></textarea>
                                         </div>
                                     </div>
 
@@ -362,7 +367,8 @@
                                 </div>
 
                                 <div class="text-center text-small mt-4">
-                                    <span>Already have an account? <a href="members_login.html" class="text-green">Login</a></span>
+                                    <span>Already have an account? <a href="members_login.html"
+                                            class="text-green">Login</a></span>
                                 </div>
 
                             </form>
@@ -376,7 +382,7 @@
 
     <!-- SCROLL TO TOP
     ================================================== -->
-    <a href="#!" class="scroll-to-top"><i class="fas fa-angle-up" aria-hidden="true"></i></a>
+    <a href="#!" class="scroll-to-top"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
 
     <!-- all js include start -->
 
@@ -386,6 +392,8 @@
     <!-- search -->
     <script src="src/search/search.js"></script>
 
+    <!-- xhr helper -->
+    <script src="src/js/xhr.js"></script>
     <!-- custom scripts -->
     <script src="src/js/main.js"></script>
 
@@ -399,7 +407,7 @@
 
     <script>
         (function () {
-            const backendBaseUrl = 'http://localhost:5000/api/'; // set backend base URL if needed
+            const backendBaseUrl = 'https://krishdevherbal.scorpnidhi.com/api/';
             const form = document.getElementById('registerForm');
             const requiredFields = Array.from(form.querySelectorAll('.required'));
 
@@ -482,7 +490,7 @@
                 });
             }
 
-            
+
 
             // pincode lookup on blur when 6 digits entered
             const pincodeEl = document.getElementById('pinCode');
@@ -496,34 +504,26 @@
             }
 
             function lookupPincode(pin) {
-                fetch(`${backendBaseUrl}commonDetails/pincode/${encodeURIComponent(pin)}`)
-                    .then(r => r.ok ? r.json() : Promise.reject(r))
-                    .then(data => {
-                        data = data?.data || {};
-                        // try common shapes
-                        if (!data) return;
-                        console.log('Pincode lookup data:', data);
-                        // If server returns {city,state}
-                        if (data.city || data.state) {
-                            if (data.city) document.getElementById('city').value = data.city;
-                            if (data.state) document.getElementById('state').value = data.state;
-                            clearError(pincodeEl);
-                            clearError(document.getElementById('city'));
-                            clearError(document.getElementById('state'));
+
+                fetch(`https://api.postalpincode.in/pincode/${pin}`)
+                    .then(function (response) { return response.ok ? response.json() : Promise.reject(response); })
+                    .then(function (data) {
+                        data = data && data[0];
+                        if (!data || data.Status !== 'Success' || !data.PostOffice || !data.PostOffice.length) {
                             return;
                         }
-                        // If server returns array of post offices
-                        if (Array.isArray(data) && data.length) {
-                            const first = data[0];
-                            if (first.district || first.block || first.taluk) document.getElementById('city').value = first.district || first.block || first.taluk;
-                            if (first.state) document.getElementById('state').value = first.state;
-                            clearError(pincodeEl);
+                        const postOffice = data.PostOffice[0];
+                        if (postOffice.District) {
+                            document.getElementById('city').value = postOffice.District;
                             clearError(document.getElementById('city'));
+                        }
+                        if (postOffice.State) {
+                            document.getElementById('state').value = postOffice.State;
                             clearError(document.getElementById('state'));
                         }
                     })
-                    .catch(() => {
-                        showError(pincodeEl, 'Pincode lookup failed or not found');
+                    .catch(function () {
+                        // ignore errors
                     });
             }
 
@@ -539,21 +539,19 @@
             }
 
             function lookupSponser(sponser) {
-                fetch(`${backendBaseUrl}memberDetail/${encodeURIComponent(sponser)}`)
-                    .then(r => r.ok ? r.json() : Promise.reject(r))
-                    .then(data => {
+                xhrFetch(`${backendBaseUrl}memberDetail/basic/${encodeURIComponent(sponser)}`)
+                    .then(function (r) { return r.ok ? r.json() : Promise.reject(r); })
+                    .then(function (data) {
                         data = data?.data || {};
-                        // try common shapes
                         if (!data) return;
                         console.log('Sponser lookup data:', data);
-                        // If server returns {name}
                         if (data.fullName) {
                             document.getElementById('sponserName').value = data.fullName + ' ( ' + data.mobileNo + ' )';
                             clearError(sponserId);
                             return;
                         }
                     })
-                    .catch(() => {
+                    .catch(function () {
                         showError(sponserId, 'Sponser not found');
                         document.getElementById('sponserName').value = '';
                     });
@@ -584,23 +582,21 @@
                     else data[name] = el.value;
                 });
 
-                fetch(`${backendBaseUrl}memberDetail/quickJoining`, {
+                xhrFetch(`${backendBaseUrl}memberDetail/quickJoining`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
                 })
-                    .then(res => {
-                        if (res.ok) return res.json().catch(() => ({}));
-                        return res.json().then(body => Promise.reject(body));
+                    .then(function (res) {
+                        if (res.ok) return res.json().catch(function () { return ({}); });
+                        return res.json().then(function (body) { return Promise.reject(body); });
                     })
-                    .then(resp => {
-                        // success: clear form and show confirmation
+                    .then(function (resp) {
                         clearForm();
                         alert((resp && resp.message) ? resp.message : 'Registration successful');
-                        // optionally redirect or additional UI handling here
                     })
-                    .catch(err => {
-                        const msg = (err && err.message) ? err.message : 'Registration failed';
+                    .catch(function (err) {
+                        var msg = (err && err.message) ? err.message : 'Registration failed';
                         alert(msg);
                     });
             });

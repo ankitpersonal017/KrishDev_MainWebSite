@@ -36268,6 +36268,7 @@ header {
 
 .navbar-brand img {
     max-height: 43px;
+    background: #c8cac8;
     transition-duration: 0.5s
 }
 

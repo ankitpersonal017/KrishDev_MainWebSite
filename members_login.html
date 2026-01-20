@@ -9,12 +9,12 @@
     <meta name="author" content="Website Design Templates">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="keywords" content="Multi Purpose HTML5 Template">
-    <meta name="description" content="KrishDev Herbal - Multi Purpose HTML5 Template">
+    <meta name="keywords" content="KrishDev Herbal, Members Login">
+    <meta name="description" content="Members login for KrishDev Herbal — access member portal.">
 
     <!-- title  -->
-    <title>KrishDev Herbal - Multi Purpose HTML5 Template</title>
-
+    <title>KrishDev Herbal - Members Login</title>
+    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <!-- favicon -->
     <link rel="shortcut icon" href="img/logos/favicon.png">
     <link rel="apple-touch-icon" href="img/logos/apple-touch-icon-57x57.png">
@@ -32,6 +32,7 @@
 
     <!-- theme core css -->
     <link href="src/css/styles.css" rel="stylesheet" id="colors">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <style>
         .error-text{ color:#d9534f; font-size:13px; margin-top:5px; display:block; }
@@ -81,7 +82,7 @@
 
                                     <div class="navbar-header navbar-header-custom">
                                         <!-- start logo -->
-                                        <a href="https://aliconhtml.websitelayout.net/index.html" class="navbar-brand"><img id="logo" src="src/img/logos/logo-inner.jpeg" alt="logo"></a>
+                                        <a href="https://aliconhtml.websitelayout.net/index.html" class="navbar-brand"><img id="logo" src="src/img/logos/logo-inner.png" alt="logo"></a>
                                         <!-- end logo -->
                                     </div>
 
@@ -186,7 +187,7 @@
 
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input type="password" id="login_password" class="form-control required" maxlength="20" name="password" placeholder="Your password">
+                                            <input type="password" id="login_password" class="form-control required" minlength="6" maxlength="20" name="password" placeholder="Your password" required>
                                         </div>
 
                                     </div>
@@ -229,7 +230,7 @@
 
     <!-- SCROLL TO TOP
     ================================================== -->
-    <a href="#!" class="scroll-to-top"><i class="fas fa-angle-up" aria-hidden="true"></i></a>
+    <a href="#!" class="scroll-to-top"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
 
     <!-- all js include start -->
 
@@ -238,6 +239,9 @@
 
     <!-- search -->
     <script src="src/search/search.js"></script>
+
+    <!-- xhr helper -->
+    <script src="src/js/xhr.js"></script>
 
     <!-- custom scripts -->
     <script src="src/js/main.js"></script>
@@ -252,7 +256,7 @@
 
     <script>
         (function(){
-            const backendBaseUrl = 'http://localhost:5000/api/';
+            const backendBaseUrl = 'https://krishdevherbal.scorpnidhi.com/api/';
             const loginUsername = document.getElementById('login_username');
             const loginPassword = document.getElementById('login_password');
             const loginBtn = document.getElementById('loginBtn');
@@ -273,7 +277,8 @@
             }
 
             const usernameRe = /^\d{6}$/;
-            const passwordRe = /^(?=.*[A-Za-z])(?=.*\d).{8,}$/;
+            const passwordMin = 6;
+            const passwordMax = 20;
 
             if(loginUsername){
                 loginUsername.addEventListener('input', ()=>{
@@ -291,7 +296,7 @@
             if(loginPassword){
                 loginPassword.addEventListener('blur', ()=>{
                     const v = (loginPassword.value||'').trim();
-                    if(!passwordRe.test(v)) showError(loginPassword, 'Password must be at least 8 chars and include letters and numbers');
+                    if(v.length < passwordMin || v.length > passwordMax) showError(loginPassword, 'Password must be 6-20 characters');
                     else clearError(loginPassword);
                 });
             }
@@ -302,24 +307,30 @@
                     const p = (loginPassword.value||'').trim();
                     let ok = true;
                     if(!usernameRe.test(u)){ showError(loginUsername, 'Username must be 6 digits'); ok = false; }
-                    if(!passwordRe.test(p)){ showError(loginPassword, 'Password must be at least 8 chars and include letters and numbers'); ok = false; }
+                    if(p.length < passwordMin || p.length > passwordMax){ showError(loginPassword, 'Password must be 6-20 characters'); ok = false; }
                     if(!ok) return;
 
-                    fetch(`${backendBaseUrl}authenticate/login/member`, {
+                    xhrFetch(`${backendBaseUrl}authenticate/login/member`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ username: u, password: p })
                     })
-                    .then(res => res.ok ? res.json().catch(()=>({})) : res.json().then(b=>Promise.reject(b)))
-                    .then(data => {
+                    .then(function(res){
+                        return res.ok ? res.json().catch(function(){ return {}; }) : res.json().then(function(b){ return Promise.reject(b); });
+                    })
+                    .then(function(data){
+                        console.log('Login success:', data.data);
                         clearError(loginUsername); clearError(loginPassword);
-                        alert((data && data.message) ? data.message : 'Login successful');
-                        // store token if returned: localStorage.setItem('token', data.token)
+                        const authData = data && data.data ? data.data : null;
+                        alert(authData.authUser.fullName + ' - ' + authData.authUser.authFor + ' login successful!');
+                        if(authData){
+                            window.location.href = 'https://member.krishdevherbal.in/#/redirect-auth?token=' + authData.authToken;
+                        }
                         loginUsername.value = '';
                         loginPassword.value = '';
                     })
-                    .catch(err => {
-                        const msg = (err && err.message) ? err.message : 'Login failed';
+                    .catch(function(err){
+                        var msg = (err && err.message) ? err.message : 'Login failed';
                         showError(loginPassword, msg);
                     });
                 });
