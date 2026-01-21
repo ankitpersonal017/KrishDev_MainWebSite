@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- metas -->
+    <meta charset="utf-8">
+    <meta name="author" content="Website Design Templates">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="keywords" content="KrishDev Herbal, Legals, Compliance">
+    <meta name="description" content="Legal & Compliance documents of KrishDev Herbal Multitrade (OPC) Pvt Ltd.">
+
+    <!-- title  -->
+    <title>KrishDev Herbal - Legals</title>
+
+    <link rel="shortcut icon" href="src/img/logos/favicon.png">
+    <link rel="stylesheet" href="src/css/plugins.css" />
+    <link rel="stylesheet" href="src/css/search.css" />
+    <link rel="stylesheet" href="src/css/base.css" />
+
+    <!-- theme core css -->
+    <link href="src/css/styles.css" rel="stylesheet" id="colors">
+    <style>
+        .page-title {
+            text-align: center;
+            font-size: 30px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .page-subtitle {
+            text-align: center;
+            color: #555;
+            margin-bottom: 40px;
+        }
+
+        .proud-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .proud-section img {
+            max-width: 300px;
+            margin-bottom: 10px;
+            border-radius: 20%;
+        }
+
+        .documents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .doc-card {
+            background: #fff;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .doc-card h3 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .doc-card p {
+            font-size: 14px;
+            color: #666;
+            min-height: 40px;
+        }
+
+        .doc-card img {
+            width: 100%;
+            max-height: 180px;
+            object-fit: contain;
+            cursor: pointer;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            transition: transform 0.2s;
+        }
+
+        .doc-card img:hover {
+            transform: scale(1.03);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+            background: #fff;
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        .modal span {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 35px;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="preloader">
+        <div class="row loader">
+            <div class="loader-icon"></div>
+        </div>
+    </div>
+    <div class="main-wrapper">
+        <header class="header-style1 menu_area-light">
+            <div class="navbar-default">
+
+                <!-- start top search -->
+                <div class="top-search bg-primary">
+                    <div class="container">
+                        <form class="search-form" action="search.html" method="GET" accept-charset="utf-8">
+                            <div class="input-group">
+                                <span class="input-group-addon cursor-pointer">
+                                    <button class="search-form_submit fas fa-search text-white" type="submit"></button>
+                                </span>
+                                <input type="text" class="search-form_input form-control" name="s" autocomplete="off"
+                                    placeholder="Type & hit enter...">
+                                <span class="input-group-addon close-search mt-1"><i class="fas fa-times"></i></span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- end top search -->
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-12 col-lg-12">
+                            <div class="menu_area alt-font">
+                                <nav class="navbar navbar-expand-lg navbar-light p-0">
+
+                                    <div class="navbar-header navbar-header-custom">
+                                        <!-- start logo -->
+                                        <a href="index.html" class="navbar-brand"><img id="logo"
+                                                src="src/img/logos/logo-inner.png" alt="logo"></a>
+                                        <!-- end logo -->
+                                    </div>
+
+                                    <div class="navbar-toggler"></div>
+
+                                    <!-- menu area -->
+                                    <ul class="navbar-nav ml-auto" id="nav" style="display: none;">
+                                        <li>
+                                            <a class="text-capitalize" href="index.html">Home</a>
+                                        </li>
+                                        <li>
+                                            <a class="text-capitalize" href="about.html">About Us</a>
+                                        </li>
+                                        <li>
+                                            <a class="text-capitalize" href="opportunity.html">Opportunity</a>
+                                        </li>
+                                        <li>
+                                            <a class="text-capitalize" href="legals.html">Legals</a>
+                                        </li>
+                                        <li><a class="text-capitalize" href="#!">Login</a>
+                                            <ul>
+                                                <li><a class="text-capitalize" href="shoppy_login.html">Shoppy</a></li>
+                                                <li><a class="text-capitalize" href="members_login.html">Members</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a class="text-capitalize" href="register.html">Member SignUp</a>
+                                        </li>
+                                        <li>
+                                            <a class="text-capitalize" href="contact.html">Contact</a>
+                                        </li>
+                                        <li>
+                                            <a class="text-capitalize" href="inquiry.html">Inquiry</a>
+                                        </li>
+                                    </ul>
+                                    <!-- end menu area -->
+
+
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="page-title-section top-position bg-img cover-background" data-overlay-dark="5"
+            data-background="src/img/bg-page-title.jpg">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>About Us</h1>
+                    </div>
+                    <div class="col-md-12">
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li class="text-light">></li>
+                            <li><a href="#!">About Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="container">
+            <h1 class="page-title">Legal & Compliance Documents</h1>
+            <p class="page-subtitle">
+                KRISHDEV HERBAL MULTITRADE (OPC) PRIVATE LIMITED
+            </p>
+            <div class="proud-section">
+                <img src="src/img/docu/proud.png" alt="Trusted Business">
+                <p><strong>Proudly Registered & Government Compliant Entity</strong></p>
+            </div>
+            <div class="documents-grid">
+
+                <!-- GST -->
+                <div class="doc-card">
+                    <img src="src/img/docu/gst_certificate.jpg" onclick="openModal(this.src)">
+                    <h3>GST Registration Certificate</h3>
+                    <p>Official GST registration under Government of India.</p>
+                </div>
+
+                <!-- Incorporation -->
+                <div class="doc-card">
+                    <img src="src/img/docu/incorporation_certificate.jpg" onclick="openModal(this.src)">
+                    <h3>Certificate of Incorporation</h3>
+                    <p>Issued by Ministry of Corporate Affairs (MCA).</p>
+                </div>
+
+                <!-- PAN -->
+                <div class="doc-card">
+                    <img src="src/img/docu/pancard.jpeg" onclick="openModal(this.src)">
+                    <h3>Company PAN Card</h3>
+                    <p>Permanent Account Number issued by Income Tax Department.</p>
+                </div>
+
+                <!-- MSME / Udyog -->
+                <div class="doc-card">
+                    <img src="src/img/docu/register_certificate.jpg" onclick="openModal(this.src)">
+                    <h3>MSME / Udyog Aadhaar</h3>
+                    <p>Registered under Ministry of MSME, Govt of India.</p>
+                </div>
+
+            </div>
+            <!-- Modal -->
+            <div class="modal" id="imgModal" onclick="if (event.target === this) closeModal()">
+                <span onclick="closeModal()"><i class="fas fa-times" aria-hidden="true"></i></span>
+                <img id="modalImg">
+            </div>
+        </section>
+
+        <section class="bg-img cover-background" data-background="src/img/bg-03.jpg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7 col-lg-6 col-xl-5">
+                        <div class="text-center bg-white-opacity p-2-0 px-lg-5 py-lg-7 rounded">
+                            <h2>Quick Contact</h2>
+                            <p class="mb-2-0">Lorem Ipsum is simply dummy text of the printing and typesetting standard
+                            </p>
+                            <a href="contact.html" class="butn d-block">contact us</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer id="footerContent"></footer>
+    </div>
+   <a href="#!" class="scroll-to-top"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
+    <script src="src/js/core.min.js"></script>
+    <script src="src/js/search.js"></script>
+    <script src="src/js/main.js"></script>
+    <script src="src/js/plugins.js"></script>
+    <script src="src/js/scripts.js"></script>
+
+    <script>
+        function openModal(src) {
+            document.getElementById('imgModal').style.display = 'flex';
+            document.getElementById('modalImg').src = src;
+        }
+
+        function closeModal() {
+            document.getElementById('imgModal').style.display = 'none';
+        }
+    </script>
+
+</body>
+
+</html>

@@ -15,20 +15,10 @@
     <title>KrishDev Herbal - Member SignUp</title>
 
     <!-- favicon -->
-    <link rel="shortcut icon" href="img/logos/favicon.png">
-    <link rel="apple-touch-icon" href="img/logos/apple-touch-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="img/logos/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="img/logos/apple-touch-icon-114x114.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <!-- plugins -->
-    <link rel="stylesheet" href="src/css/plugins.css">
-
-    <!-- search css -->
-    <link rel="stylesheet" href="src/search/search.css">
-
-    <!-- quform css -->
-    <link rel="stylesheet" href="src/quform/css/base.css">
+    <link rel="shortcut icon" href="src/img/logos/favicon.png">
+    <link rel="stylesheet" href="src/css/plugins.css" />
+    <link rel="stylesheet" href="src/css/search.css" />
+    <link rel="stylesheet" href="src/css/base.css" />
 
     <!-- theme core css -->
     <link href="src/css/styles.css" rel="stylesheet" id="colors">
@@ -70,8 +60,7 @@
                 <!-- start top search -->
                 <div class="top-search bg-primary">
                     <div class="container">
-                        <form class="search-form" action="/" method="GET"
-                            accept-charset="utf-8">
+                        <form class="search-form" action="/" method="GET" accept-charset="utf-8">
                             <div class="input-group">
                                 <span class="input-group-addon cursor-pointer">
                                     <button class="search-form_submit fas fa-search text-white" type="submit"></button>
@@ -91,11 +80,8 @@
                                 <nav class="navbar navbar-expand-lg navbar-light p-0">
 
                                     <div class="navbar-header navbar-header-custom">
-                                        <!-- start logo -->
-                                        <a href="https://aliconhtml.websitelayout.net/index.html"
-                                            class="navbar-brand"><img id="logo" src="src/img/logos/logo-inner.png"
-                                                alt="logo"></a>
-                                        <!-- end logo -->
+                                        <a href="/" class="navbar-brand"><img id="logo"
+                                                src="src/img/logos/logo-inner.png" alt="logo"></a>
                                     </div>
 
                                     <div class="navbar-toggler"></div>
@@ -167,22 +153,17 @@
 
         <!-- REGISTER FORM
         ================================================== -->
-        <section class="bg-light p-0">
-
+        <section class="bg-light p-0" id="registerSection">
             <div class="container d-flex flex-column">
                 <div class="row align-items-center justify-content-center min-vh-100">
                     <div class="col-12 col-sm-12 col-md-12 col-lg-10">
-
-                        <!-- Form -->
                         <div class="card p-2-0 p-sm-2-5 my-2-0">
-
                             <div class="mb-4 text-center">
                                 <h2 class="font-weight-normal mb-0">Welcome to <span
                                         class="text-primary text-nowrap font-weight-bold">KrishDev
                                         Herbal</span></h2>
                                 <p class="mb-0">Register to your account.</p>
                             </div>
-
                             <form id="registerForm" novalidate>
 
                                 <div class="row">
@@ -257,9 +238,8 @@
                                     <div class="col-12 col-sm-12 col-md-6 col-lg-4">
                                         <div class="form-group">
                                             <label>Pan Card No</label>
-                                            <input type="text" id="panCardNo" maxlength="10"
-                                                class="form-control required" name="panCardNo"
-                                                placeholder="Pan Card No">
+                                            <input type="text" id="panCardNo" maxlength="10" class="form-control"
+                                                name="panCardNo" placeholder="Pan Card No">
                                         </div>
                                     </div>
 
@@ -268,6 +248,14 @@
                                             <label>Address</label>
                                             <textarea type="text" id="fullAddress" class="form-control required"
                                                 rows="3" name="fullAddress" placeholder="Full Address"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4">
+                                        <div class="form-group">
+                                            <label>Pincode</label>
+                                            <input type="text" id="pinCode" class="form-control required" name="pinCode"
+                                                placeholder="Pincode">
                                         </div>
                                     </div>
 
@@ -325,13 +313,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-12 col-sm-12 col-md-6 col-lg-4">
-                                        <div class="form-group">
-                                            <label>Pincode</label>
-                                            <input type="text" id="pinCode" class="form-control required" name="pinCode"
-                                                placeholder="Pincode">
-                                        </div>
-                                    </div>
+
 
                                     <div class="col-12 col-sm-12 col-md-6">
                                         <div class="form-group">
@@ -370,7 +352,6 @@
                                     <span>Already have an account? <a href="members_login.html"
                                             class="text-green">Login</a></span>
                                 </div>
-
                             </form>
                         </div>
                         <!-- End Form -->
@@ -378,36 +359,176 @@
                 </div>
             </div>
         </section>
+
+        <!-- Welcome letter with Print & PDF option -->
+        <section id="welcomeSection" class="bg-light p-0" style="display:none;">
+            <div class="container py-5">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-10">
+                        <div class="card p-4"
+                            style="background: linear-gradient(180deg,#ffffff 0%, #f7fbff 100%); border: 1px solid #e6eef7;">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <h3 class="mb-0" style="color:#0b556b; font-weight:700;">Congratulations! 🎉</h3>
+                                <div>
+                                    <button type="button" class="butn medium" onclick="downloadWelcomePDF()"
+                                        style="background:#f0a500; color:#082032; border:none;">Download PDF</button>
+                                </div>
+                            </div>
+
+                            <div id="welcomeLetter" class="welcome-letter"
+                                style="padding:20px; background:transparent;">
+                                <div style="border-left:6px solid #0b556b; padding-left:16px; margin-bottom:18px;">
+                                    <h2 style="margin:0; color:#0b556b; font-size:22px;">Your Registration Has Been
+                                        Completed Successfully</h2>
+                                </div>
+
+                                <p style="color:#333; font-size:15px; line-height:1.6; margin-bottom:18px;">Welcome to
+                                    <strong style="color:#0b556b;">KDH (Krish Dev Herbal Pvt Ltd)</strong>.
+                                    We wish you great success and are confident that you will have a rewarding journey
+                                    with our organization.
+                                </p>
+
+                                <h4 class="text-center" style="color:#0b556b; margin:10px;">Registration Details:</h4>
+
+                                <table
+                                    style="max-width: 100%;border-collapse:collapse;font-size:15px;color:#222;margin: auto;">
+                                    <tr>
+                                        <td style="padding:6px 8px; width:35%; color:#555;">Member ID:</td>
+                                        <td style="padding:6px 8px; font-weight:700;"><span id="wl_memberId">-</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding:6px 8px; color:#555;">Name:</td>
+                                        <td style="padding:6px 8px; font-weight:700;"><span id="wl_name">-</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding:6px 8px; color:#555;">Joining Date:</td>
+                                        <td style="padding:6px 8px; font-weight:700;"><span id="wl_joiningDate">-</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding:6px 8px; color:#555;">Mobile Number:</td>
+                                        <td style="padding:6px 8px; font-weight:700;"><span id="wl_mobile">-</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding:6px 8px; color:#555;">Sponsor ID:</td>
+                                        <td style="padding:6px 8px; font-weight:700;"><span id="wl_sponsorId">-</span>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                                <p style="margin-top:18px; color:#333; font-size:15px;">Please keep your login
+                                    credentials safe for future use.</p>
+
+                                <div style="margin-top:28px; color:#333; font-size:15px;">
+                                    <p style="margin:0">Warm Regards,</p>
+                                    <p style="margin:0; font-weight:700; color:#0b556b;">Krish Dev Herbal</p>
+                                    <p style="margin-top:6px; color:#0b556b; font-weight:600;"><a
+                                            href="https://krishdevherbal.in/" target="_blank">🌐
+                                            https://krishdevherbal.in/</a> </p>
+                                </div>
+                            </div>
+
+                            <small class="text-muted d-block mt-3">Tip: Use the <strong>Download PDF</strong> button to
+                                save a copy</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <style>
+                /* Letter styling */
+                .welcome-letter h2,
+                .welcome-letter h4 {
+                    font-family: 'Helvetica Neue', Arial, sans-serif;
+                }
+
+                .welcome-letter table td:first-child {
+                    color: #6b7280;
+                }
+
+                /* Print rules: show only the welcome letter */
+                @media print {
+                    body * {
+                        visibility: hidden !important;
+                    }
+
+                    #welcomeLetter,
+                    #welcomeLetter * {
+                        visibility: visible !important;
+                    }
+
+                    #welcomeLetter {
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        width: 100%;
+                    }
+
+                    a[href]:after {
+                        content: "";
+                    }
+
+                    @page {
+                        size: A4;
+                        margin: 20mm;
+                    }
+                }
+            </style>
+
+            <!-- html2pdf for PDF generation -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+            <script>
+                function printWelcome() {
+                    window.print();
+                }
+
+                function downloadWelcomePDF() {
+                    const element = document.getElementById('welcomeLetter');
+                    const opt = {
+                        margin: 10,
+                        filename: 'MBSSS_Welcome_Letter.pdf',
+                        image: { type: 'jpeg', quality: 0.98 },
+                        html2canvas: { scale: 2, useCORS: true },
+                        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+                    };
+                    // trigger download
+                    html2pdf().set(opt).from(element).save();
+                }
+            </script>
+        </section>
+
+        <footer id="footerContent"></footer>
     </div>
-
-    <!-- SCROLL TO TOP
-    ================================================== -->
     <a href="#!" class="scroll-to-top"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
-
-    <!-- all js include start -->
-
-    <!-- jquery -->
     <script src="src/js/core.min.js"></script>
-
-    <!-- search -->
-    <script src="src/search/search.js"></script>
-
-    <!-- xhr helper -->
-    <script src="src/js/xhr.js"></script>
-    <!-- custom scripts -->
+    <script src="src/js/search.js"></script>
     <script src="src/js/main.js"></script>
-
-    <!-- form plugins js -->
-    <script src="src/quform/js/plugins.js"></script>
-
-    <!-- form scripts js -->
-    <script src="src/quform/js/scripts.js"></script>
-
+    <script src="src/js/plugins.js"></script>
+    <script src="src/js/scripts.js"></script>
     <!-- all js include end -->
 
     <script>
         (function () {
             const backendBaseUrl = 'https://krishdevherbal.scorpnidhi.com/api/';
+
+            // safe wrapper: prefer global xhrFetch if available, otherwise fall back to window.fetch
+            function safeXhrFetch(url, options) {
+                if (typeof window.xhrFetch === 'function') return window.xhrFetch(url, options);
+                // fallback to fetch with a compatible response shape
+                options = options || {};
+                const fetchOpts = { method: options.method || 'GET', headers: options.headers || {} };
+                if (options.body) fetchOpts.body = options.body;
+                return fetch(url, fetchOpts).then(function (res) {
+                    return {
+                        ok: res.ok,
+                        status: res.status,
+                        statusText: res.statusText,
+                        text: function () { return res.text(); },
+                        json: function () { return res.json(); }
+                    };
+                });
+            }
             const form = document.getElementById('registerForm');
             const requiredFields = Array.from(form.querySelectorAll('.required'));
 
@@ -417,6 +538,35 @@
                 let err = container.querySelector('.error-text');
                 if (!err) { err = document.createElement('span'); err.className = 'error-text'; container.appendChild(err); }
                 err.textContent = msg;
+            }
+
+            function formatDateString(iso) {
+                if (!iso) return '';
+                const d = new Date(iso);
+                if (isNaN(d)) return iso;
+                const day = d.getDate();
+                const year = d.getFullYear();
+                const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                return day + ' ' + monthNames[d.getMonth()] + ' ' + year;
+            }
+
+            function populateWelcome(data) {
+                if (!data) return;
+                const member = data.savedMember || {};
+                const pair = data.savedMemberPairObj || {};
+
+                document.getElementById('wl_memberId').innerText = member.memberId || '-';
+                document.getElementById('wl_name').innerText = member.fullName || '-';
+                document.getElementById('wl_joiningDate').innerText = formatDateString(member.createdOn || member.modifiedOn) || '-';
+                document.getElementById('wl_mobile').innerText = member.mobileNo || '-';
+                document.getElementById('wl_sponsorId').innerText = pair.sponserId || pair.sponsorId || '-';
+
+                // show the section and scroll to it
+                const welcomeSection = document.getElementById('welcomeSection');
+                if (welcomeSection) { welcomeSection.style.display = 'block'; welcomeSection.scrollIntoView({ behavior: 'smooth' }); }
+
+                // hide the registration form card to avoid confusion
+                try { const formCard = document.getElementById('registerSection'); if (formCard) formCard.style.display = 'none'; } catch (e) { }
             }
 
             function clearError(el) {
@@ -483,14 +633,16 @@
 
             const panEl = document.getElementById('panCardNo');
             if (panEl) {
-                panEl.addEventListener('input', () => {
+                panEl.addEventListener('blur', () => {
                     const clean = panEl.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
                     if (panEl.value !== clean) panEl.value = clean;
-                    if (panEl.classList.contains('error-border')) validateField(panEl);
+                    if (panEl.value) {
+                        validateField(panEl);
+                    } else {
+                        clearError(panEl);
+                    }
                 });
             }
-
-
 
             // pincode lookup on blur when 6 digits entered
             const pincodeEl = document.getElementById('pinCode');
@@ -539,7 +691,7 @@
             }
 
             function lookupSponser(sponser) {
-                xhrFetch(`${backendBaseUrl}memberDetail/basic/${encodeURIComponent(sponser)}`)
+                safeXhrFetch(`${backendBaseUrl}memberDetail/basic/${encodeURIComponent(sponser)}`)
                     .then(function (r) { return r.ok ? r.json() : Promise.reject(r); })
                     .then(function (data) {
                         data = data?.data || {};
@@ -582,7 +734,7 @@
                     else data[name] = el.value;
                 });
 
-                xhrFetch(`${backendBaseUrl}memberDetail/quickJoining`, {
+                safeXhrFetch(`${backendBaseUrl}memberDetail/quickJoining`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
@@ -593,10 +745,12 @@
                     })
                     .then(function (resp) {
                         clearForm();
-                        alert((resp && resp.message) ? resp.message : 'Registration successful');
+                        alert("New Member: " + resp.data.savedMember.memberId + ' (' + resp.data.savedMember.fullName + ') Registration successful, Now you can login to your account.');
+                        // populate and show welcome letter
+                        try { populateWelcome(resp.data); } catch (e) { console.error(e); }
                     })
                     .catch(function (err) {
-                        var msg = (err && err.message) ? err.message : 'Registration failed';
+                        var msg = (err && err.error.message) ? err.error.message : 'Registration failed';
                         alert(msg);
                     });
             });

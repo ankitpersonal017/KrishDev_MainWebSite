@@ -16,19 +16,10 @@
     <title>KrishDev Herbal - Members Login</title>
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <!-- favicon -->
-    <link rel="shortcut icon" href="img/logos/favicon.png">
-    <link rel="apple-touch-icon" href="img/logos/apple-touch-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="img/logos/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="img/logos/apple-touch-icon-114x114.png">
-
-    <!-- plugins -->
-    <link rel="stylesheet" href="src/css/plugins.css">
-
-    <!-- search css -->
-    <link rel="stylesheet" href="src/search/search.css">
-
-    <!-- quform css -->
-    <link rel="stylesheet" href="src/quform/css/base.css">
+    <link rel="shortcut icon" href="src/img/logos/favicon.png">
+    <link rel="stylesheet" href="src/css/plugins.css" />
+    <link rel="stylesheet" href="src/css/search.css" />
+    <link rel="stylesheet" href="src/css/base.css" />
 
     <!-- theme core css -->
     <link href="src/css/styles.css" rel="stylesheet" id="colors">
@@ -238,7 +229,7 @@
     <script src="src/js/core.min.js"></script>
 
     <!-- search -->
-    <script src="src/search/search.js"></script>
+    <script src="src/js/search.js"></script>
 
     <!-- xhr helper -->
     <script src="src/js/xhr.js"></script>
@@ -330,8 +321,8 @@
                         loginPassword.value = '';
                     })
                     .catch(function(err){
-                        var msg = (err && err.message) ? err.message : 'Login failed';
-                        showError(loginPassword, msg);
+                        var msg = (err && err.error.message) ? err.error.message : 'Login failed';
+                        alert(msg);
                     });
                 });
             }
