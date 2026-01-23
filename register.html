@@ -319,7 +319,8 @@
                                         <div class="form-group">
                                             <label>Password</label>
                                             <input type="password" id="password" class="form-control required"
-                                                name="password" placeholder="Password">
+                                                name="password" placeholder="Password" required minlength="6" maxlength="20" aria-describedby="passwordError">
+                                            <span class="error-text" id="passwordError" aria-live="polite"></span>
                                         </div>
                                     </div>
 
@@ -328,7 +329,8 @@
                                         <div class="form-group">
                                             <label>Confirm Password</label>
                                             <input type="password" id="confirm_password" class="form-control required"
-                                                name="confirm_password" placeholder="Your confirm password">
+                                                name="confirm_password" placeholder="Your confirm password" required minlength="6" maxlength="20" aria-describedby="confirmPasswordError">
+                                            <span class="error-text" id="confirmPasswordError" aria-live="polite"></span>
                                         </div>
                                     </div>
                                     <!-- End Input -->
@@ -485,9 +487,12 @@
 
                 function downloadWelcomePDF() {
                     const element = document.getElementById('welcomeLetter');
+                    const name = document.getElementById('wl_name').innerText || 'Member';
+                    const memberId = document.getElementById('wl_memberId').innerText || 'ID';
+                    
                     const opt = {
                         margin: 10,
-                        filename: 'MBSSS_Welcome_Letter.pdf',
+                        filename: `Welcome_Letter_${memberId}_${name.replace(/\s+/g, '_')}.pdf`,
                         image: { type: 'jpeg', quality: 0.98 },
                         html2canvas: { scale: 2, useCORS: true },
                         jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
@@ -606,7 +611,12 @@
                     if (!panRe.test(val)) { showError(el, 'PAN should match format (e.g. ABCDE1234F)'); return false; }
                 }
 
+                if (el.id === 'password') {
+                    if (val.length < 6 || val.length > 20) { showError(el, 'Password must be 6-20 characters'); return false; }
+                }
+
                 if (el.id === 'confirm_password') {
+                    if (val.length < 6 || val.length > 20) { showError(el, 'Confirm password must be 6-20 characters'); return false; }
                     const pwd = document.getElementById('password').value || '';
                     if (val !== pwd) { showError(el, 'Passwords do not match'); return false; }
                 }
