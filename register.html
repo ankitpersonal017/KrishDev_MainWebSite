@@ -700,6 +700,35 @@
                 });
             }
 
+            // populate fields from URL query string (sponserId / sponsorId, position)
+            (function populateFromQuery() {
+                try {
+                    const params = new URLSearchParams(window.location.search);
+                    const qSponser = params.get('sponserId') || params.get('sponsorId') || params.get('sponser') || params.get('sponsor');
+                    if (qSponser) {
+                        const clean = qSponser.toString().replace(/\D/g, '');
+                        if (clean) {
+                            sponserId.value = clean;
+                            // immediately attempt lookup (lookupSponser is defined below)
+                            try { lookupSponser(clean); } catch (e) { console && console.warn && console.warn('lookupSponser not available yet'); }
+                        }
+                    }
+
+                    const qPos = params.get('position');
+                    if (qPos) {
+                        const sel = document.getElementById('position');
+                        if (sel) {
+                            const val = qPos.toString().toUpperCase();
+                            for (let i = 0; i < sel.options.length; i++) {
+                                if (sel.options[i].value === val) { sel.selectedIndex = i; clearError(sel); break; }
+                            }
+                        }
+                    }
+                } catch (e) {
+                    // fail silently
+                }
+            })();
+
             function lookupSponser(sponser) {
                 safeXhrFetch(`${backendBaseUrl}memberDetail/basic/${encodeURIComponent(sponser)}`)
                     .then(function (r) { return r.ok ? r.json() : Promise.reject(r); })
