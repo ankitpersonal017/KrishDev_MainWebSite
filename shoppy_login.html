@@ -24,7 +24,10 @@
     <!-- theme core css -->
     <link href="src/css/styles.css" rel="stylesheet" id="colors">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+     <style>
+        .error-text{ color:#d9534f; font-size:13px; margin-top:5px; display:block; }
+        .error-border{ border-color:#d9534f !important; box-shadow:none !important; }
+    </style>
 </head>
 
 <body>
@@ -153,7 +156,7 @@
                             </div>
 
                             <!-- Form -->
-                            <form>
+                            <form id="loginForm" novalidate>
 
                                 <div class="row">
 
@@ -162,7 +165,7 @@
 
                                         <div class="form-group">
                                             <label>Username</label>
-                                            <input type="text" class="form-control" name="username" placeholder="Your username">
+                                            <input type="text" id="login_username" class="form-control required" maxlength="6" name="username" placeholder="Your username">
                                         </div>
 
                                     </div>
@@ -173,7 +176,7 @@
 
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input type="password" class="form-control" name="password" placeholder="Your password">
+                                            <input type="password" id="login_password" class="form-control required" minlength="6" maxlength="20" name="password" placeholder="Your password" required>
                                         </div>
 
                                     </div>
@@ -193,12 +196,8 @@
                                     </div>
 
                                     <div class="col-md-12 center">
-                                        <a type="submit" class="butn medium btn-block mt-4 mb-0" href="index.html">Login</a>
+                                        <button type="button" id="loginBtn" class="butn medium btn-block mt-4 mb-0">Login</button>
                                     </div>
-                                </div>
-
-                                <div class="text-center text-small mt-4">
-                                    <span>Don't have an account yet? <a href="register.html" class="text-green">Register</a></span>
                                 </div>
 
                             </form>
@@ -216,9 +215,93 @@
     <a href="#!" class="scroll-to-top"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
     <script src="src/js/core.min.js"></script>
     <script src="src/js/search.js"></script>
+    <script src="src/js/xhr.js"></script>
     <script src="src/js/main.js"></script>
     <script src="src/js/plugins.js"></script>
     <script src="src/js/scripts.js"></script>
+     <script>
+        (function(){
+            const backendBaseUrl = 'https://krishdevherbal.scorpnidhi.com/api/';
+            const loginUsername = document.getElementById('login_username');
+            const loginPassword = document.getElementById('login_password');
+            const loginBtn = document.getElementById('loginBtn');
+
+            function showError(el, msg){
+                if(!el) return;
+                el.classList.add('error-border');
+                const container = el.closest('.form-group') || el.parentElement;
+                let err = container.querySelector('.error-text');
+                if(!err){ err = document.createElement('span'); err.className='error-text'; container.appendChild(err); }
+                err.textContent = msg;
+            }
+            function clearError(el){
+                if(!el) return;
+                el.classList.remove('error-border');
+                const container = el.closest('.form-group') || el.parentElement;
+                const err = container.querySelector('.error-text'); if(err) err.remove();
+            }
+
+            const usernameRe = /^\d{6}$/;
+            const passwordMin = 6;
+            const passwordMax = 20;
+
+            if(loginUsername){
+                loginUsername.addEventListener('input', ()=>{
+                    const clean = loginUsername.value.replace(/\D/g,'');
+                    if(loginUsername.value !== clean) loginUsername.value = clean;
+                    if(loginUsername.classList.contains('error-border')) clearError(loginUsername);
+                });
+                loginUsername.addEventListener('blur', ()=>{
+                    const v = (loginUsername.value||'').trim();
+                    if(!usernameRe.test(v)) showError(loginUsername, 'Username must be 6 digits');
+                    else clearError(loginUsername);
+                });
+            }
+
+            if(loginPassword){
+                loginPassword.addEventListener('blur', ()=>{
+                    const v = (loginPassword.value||'').trim();
+                    if(v.length < passwordMin || v.length > passwordMax) showError(loginPassword, 'Password must be 6-20 characters');
+                    else clearError(loginPassword);
+                });
+            }
+
+            if(loginBtn){
+                loginBtn.addEventListener('click', ()=>{
+                    const u = (loginUsername.value||'').trim();
+                    const p = (loginPassword.value||'').trim();
+                    let ok = true;
+                    if(!usernameRe.test(u)){ showError(loginUsername, 'Username must be 6 digits'); ok = false; }
+                    if(p.length < passwordMin || p.length > passwordMax){ showError(loginPassword, 'Password must be 6-20 characters'); ok = false; }
+                    if(!ok) return;
+
+                    xhrFetch(`${backendBaseUrl}authenticate/login/franchise`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ username: u, password: p })
+                    })
+                    .then(function(res){
+                        return res.ok ? res.json().catch(function(){ return {}; }) : res.json().then(function(b){ return Promise.reject(b); });
+                    })
+                    .then(function(data){
+                        console.log('Login success:', data.data);
+                        clearError(loginUsername); clearError(loginPassword);
+                        const authData = data && data.data ? data.data : null;
+                        alert(authData.authUser.fullName + ' - ' + authData.authUser.authFor + ' login successful!');
+                        if(authData){
+                            window.location.href = 'https://member.krishdevherbal.in/#/redirect-auth?token=' + authData.authToken;
+                        }
+                        loginUsername.value = '';
+                        loginPassword.value = '';
+                    })
+                    .catch(function(err){
+                        var msg = (err && err.error.message) ? err.error.message : 'Login failed';
+                        alert(msg);
+                    });
+                });
+            }
+        })();
+    </script>
 </body>
 
 </html>
